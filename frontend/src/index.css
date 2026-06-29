@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-purple: #7c3aed;
+  --color-brand-blue: #3b82f6;
+  --color-dark-bg: #0f172a;
+  --color-dark-card: rgba(15, 23, 42, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-shine: rgba(255, 255, 255, 0.03);
+}
+
+@layer base {
+  body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+.dark body {
+  background-color: #030712;
+  color: #f8fafc;
+}
+
+/* Custom Scrollbar for modern SaaS feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  transition: background-color 0.3s;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Premium Glow Utilities */
+.glow-purple {
+  box-shadow: 0 0 25px -5px rgba(124, 58, 237, 0.25);
+}
+.dark .glow-purple {
+  box-shadow: 0 0 25px -5px rgba(124, 58, 237, 0.4);
+}
+.glow-blue {
+  box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.2);
+}
+.dark .glow-blue {
+  box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.4);
+}
+.glow-green {
+  box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.2);
+}
+.dark .glow-green {
+  box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.4);
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 0 15px -3px rgba(124, 58, 237, 0.05);
+  transform: translateY(-2px);
+}
+
+.dark .glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(124, 58, 237, 0.15);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0f172a;
+  transition: all 0.2s ease-in-out;
+}
+.dark .glass-input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}
+.glass-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.25);
+  outline: none;
+}
+
+/* Smooth theme transition on root */
+html {
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Page content wrapper (below full-width hero) */
+.page-container {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding: 1.75rem 2rem 2.5rem;
+  }
+}
+
+/* Trello-style task card */
+.task-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .task-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.dark .task-card:hover {
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+/* Kanban column */
+.kanban-column {
+  background: rgba(241, 245, 249, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .kanban-column {
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Theme toggle pill */
+.theme-toggle-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 3.25rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: rgba(241, 245, 249, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark .theme-toggle-pill {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 9999px;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  left: 0.2rem;
+}
+
+.dark .theme-toggle-thumb {
+  transform: translateX(1.45rem);
+  background: #a78bfa;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.5);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  color: #0f172a;
+  transition: color 0.3s;
+}
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #f8fafc;
+}
+
